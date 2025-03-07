@@ -5,7 +5,7 @@
     <pluginVersion>${project.version}</pluginVersion>
     <mirthVersion>${mc.versions}</mirthVersion>
     <url>https://sereen.io</url>
-    <description>A plugin for Mirth Connect</description>
+    <description>Mirth Connect plugin for loading CSV files using DuckDb and generating Java models dynamically</description>
 
     <serverClasses>
         <string>io.sereen.coconut.CoconutPlugin</string>
