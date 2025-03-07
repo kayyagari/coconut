@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pluginMetaData path="coconut">
+    <name>Coconut</name>
+    <author>Sereen Systems</author>
+    <pluginVersion>${project.version}</pluginVersion>
+    <mirthVersion>${mc.versions}</mirthVersion>
+    <url>https://sereen.io</url>
+    <description>A plugin for Mirth Connect</description>
+
+    <serverClasses>
+        <string>io.sereen.coconut.CoconutPlugin</string>
+    </serverClasses>
+
+    <library type="SERVER" path="coconut-${project.version}.jar" />
+    <library type="SERVER" path="duckdb_jdbc-${duckdb.version}.jar" />
+</pluginMetaData>
