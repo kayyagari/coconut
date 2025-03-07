@@ -1,3 +1,4 @@
+[![Java CI with Maven](https://github.com/kayyagari/coconut/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/kayyagari/coconut/actions/workflows/maven.yml)
 # Coconut
 Coconut is a plugin for MirthConnect offering below functionalties:
 1. Load CSV files using DuckDb
