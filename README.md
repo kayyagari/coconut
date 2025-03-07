@@ -60,3 +60,16 @@ var generatedJavaModelSource = petStore.generateJavaModelFrom("animals");
 // the generated source can be modified if needed before passing it to $cn.compileJavaModel() to generate the corresponding class
 logger.warn(generatedJavaModelSource);
 ```
+## Loading a CSV file using raw-SQL
+The DuckDb connection underlying a CoconutStore instance can be used to execute SQL statement directly.
+This is helpful in cases where a given CSV file needs custom config options to load.
+
+For example, to load NPI data:
+```javascript
+var $cn = globalMap.get("$cn");
+var storeName = "npidata";
+var npiStore = $cn.openStore(storeName);
+npiStore.loadCsvWithRawSql("create table npi as select * from read_csv('/tmp/npidata_pfile_20050523-20250209.csv', all_varchar=1)");
+var npiModelSrc = npiStore.generateJavaModelFrom("npi");
+logger.warn(npiModelSrc);
+```

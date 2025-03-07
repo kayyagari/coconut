@@ -23,13 +23,19 @@ public class CoconutStore {
         this.dbCon = dbCon;
     }
 
-    public void loadCsv(String filePath, String tableName) throws Exception {
+    public void loadCsv(String filePath, String tableName) throws SQLException {
         loadCsv(filePath, tableName, ',');
     }
 
-    public void loadCsv(String filePath, String tableName, char delim) throws Exception {
+    public void loadCsv(String filePath, String tableName, char delim) throws SQLException {
         Statement stmt = dbCon.createStatement();
         String sql = String.format("create table %s as select * from read_csv('%s', delim='%c')", tableName, filePath, delim);
+        stmt.execute(sql);
+        stmt.close();
+    }
+
+    public void loadCsvWithRawSql(String sql) throws SQLException {
+        Statement stmt = dbCon.createStatement();
         stmt.execute(sql);
         stmt.close();
     }

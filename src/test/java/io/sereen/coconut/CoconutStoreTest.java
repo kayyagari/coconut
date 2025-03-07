@@ -59,4 +59,16 @@ public class CoconutStoreTest {
         assertFalse(new File(rootDir, "/data/" + tableName).exists());
         cn.close();
     }
+
+    @Test
+    public void testLoadCsvUsingRawSql() throws Exception {
+        File rootDir = tmpFolder.newFolder("animals");
+        Coconut.init(rootDir);
+        Coconut cn = Coconut.getInstance();
+        CoconutStore store = cn.openStore("animal-data");
+        String sql = "create table animals as select * from read_csv('src/test/resources/animals.csv');";
+        store.loadCsvWithRawSql(sql);
+        List<Animal> animals = store.getList("select * from animals", Animal.class);
+        assertEquals(4, animals.size());
+    }
 }
